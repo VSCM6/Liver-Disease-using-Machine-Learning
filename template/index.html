@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+select {
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+    font-size: 16px; /* Set the desired font size */
+}
+    </style>
+    <title>Liver Disease Prediction</title>
+</head>
+<body>
+    <div class="container">
+       
+        <form action="{{ url_for('predict')}}" method="post" >
+           <h1 style="color: #4caf50; padding-top: 150px;">Liver Disease Prediction</h1>
+
+            <label for="age">Age:</label>
+            <input type="number" name="age" required>
+
+            <label for="gender">Gender:</label>
+            <select name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label for="Total_Bilirubin">Total Bilirubin:</label>
+            <input type="number" name="Total_Bilirubin" required="required" step="0.1">
+
+            <label for="Direct_Bilirubin">Direct Bilirubin:</label>
+            <input type="number" name="Direct_Bilirubin" required="required" step="0.1">
+
+            <label for="Alkphos_Alkaline_Phosphotase">Alkphos Alkaline Phosphotase:</label>
+            <input type="number" name="Alkphos_Alkaline_Phosphotase" required="required" step="0.1">
+            
+            <label for="SgptAl_amine_Aminotransferase">Sgpt Alamine Aminotransferase:</label>
+            <input type="number" name="SgptAl_amine_Aminotransferase" required="required" step="0.1">
+            
+            <label for="Sgot_partate_Aminotransferase">Sgot Aspartate Aminotransferase:</label>
+            <input type="number" name="Sgot_partate_Aminotransferase" required="required" step="0.1">
+
+            <label for="Total_Protiens">Total Protiens:</label>
+            <input type="number" name="Total_Protiens" required="required" step="0.1">
+
+            <label for="ALB_Albumin">ALB Albumin:</label>
+            <input type="number" name="ALB_Albumin" required="required" step="0.1">
+
+            <label for="A/G_Ratio_Albumin_and_Globulin_Ratio">A/G Ratio Albumin and Globulin Ratio:</label>
+            <input type="number" name="A/G_Ratio_Albumin_and_Globulin_Ratio" required="required" step="0.1">
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+        <br>
+        <br>
+        {{prediction_text}}
+    </div>
+</body>
+</html>
